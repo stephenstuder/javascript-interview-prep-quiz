@@ -1,0 +1,48 @@
+/* Element Styles */
+body {
+  background: #252c4a;
+  font-family: ocr-a-std, monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: #f7f7f2;
+  min-height: 100vh;
+}
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+p {
+  font-size: 1rem;
+}
+.javascript-image {
+  width: 200px;
+}
+.outside-border {
+    border: 2px solid #f7df1e;
+}
+
+/* Custom Styles */
+@media (max-width: 758px) {
+
+  /* Mobile */
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .javascript-image {
+    width: 100px;
+  }
+}
