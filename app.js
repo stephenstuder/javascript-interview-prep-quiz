@@ -109,29 +109,27 @@ function timerBegin() {
     }, 1000);
 }
 
+let i = 0;
 function loadQuestions() {
-    questionBank.forEach(Element => {
-        let i = 0;
-        questionNum.textContent = i+1;
-        question.textContent = questionBank[i].q;
-        optionOne.textContent = questionBank[i].o1;
-        optionTwo.textContent = questionBank[i].o2;
-        optionThree.textContent = questionBank[i].o3;
-        optionFour.textContent = questionBank[i].o4;
-
-        optionsParent.addEventListener("click", function (e) {
-            e.preventDefault();
-            let answer = questionBank[i].a;
-            if (e.target.textContent !== answer) {
-                deductFiveSeconds();
-            } else {
-            return i++;
-            }
-        });
-        
-    });
-   
+    questionNum.textContent = i + 1;
+    question.textContent = questionBank[i].q;
+    optionOne.textContent = questionBank[i].o1;
+    optionTwo.textContent = questionBank[i].o2;
+    optionThree.textContent = questionBank[i].o3;
+    optionFour.textContent = questionBank[i].o4;
 }
+
+optionsParent.addEventListener("click", function (e) {
+    e.preventDefault();
+    let answer = questionBank[i].a;
+    if (e.target.textContent !== answer) {
+        deductFiveSeconds();
+    } else {
+        i++;
+        loadQuestions();
+    }
+});
+
 
 // Come back here and add the shakey animation
 let shakeClock = document.querySelector("#shake-clock-toggle");
