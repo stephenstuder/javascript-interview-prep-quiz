@@ -37,6 +37,9 @@ button {
 #countdown{
     
 }
+.progress-bar {
+    background: #f7df1e;
+}
 @media (max-width: 758px) {
 
   /* Mobile */
