@@ -13,18 +13,26 @@
 
 <body class="d-flex">
     <div class="container container-fluid d-flex flex-column align-self-center justify-content-center outside-border p-3">
-        <nav class="d-flex flex-row text-center p-4">
-            <h1>Baby</h1>
+        <nav class="d-flex flex-row justify-content-center p-4">
+            <h1>Leaderboard</h1>
         </nav>
-        <main class="d-flex flex-column align-items-center p-3">
-            <ul>
-                <li class="p-2">10 Question Quiz</li>
-                <li class="p-2">1 Minute on the Clock</li>
-                <li class="p-2">Incorrect Answers Shorten Time</li>
-                <li class="p-2">Time Remaining is your Score!</li>
-            </ul>
+        <main class="d-flex flex-column align-items-center">
+            <div class="d-flex flex-row">
+                <ul class = "p-0 d-flex flex-column align-items-center">
+                    <li class="p-2 list-inline-item leaderboard-title">Initials</li>
+                    <li class="p-2 list-inline-item">SS</li>
+                    <li class="p-2 list-inline-item">SS</li>
+                    <li class="p-2 list-inline-item">SS</li>
+                </ul>
+                <ul class="d-flex flex-column align-items-center">
+                    <li class="p-2 list-inline-item leaderboard-title">Score</li>
+                    <li class="p-2 list-inline-item">45</li>
+                    <li class="p-2 list-inline-item">41</li>
+                    <li class="p-2 list-inline-item">12</li>
+                </ul>
+            </div>
+            <a href="#"><button class="m-2">Clear Leaderboard</button></a>
             <a href="../index.html"><button class="m-2">Exit</button></a>
-            <a href="#"><button class="m-2">Leaderboard</button></a>
         </main>
         <footer class="d-flex flex-column align-items-center p-3">
             <a href="../index.html"><img class ="javascript-image" src="../images/javascript.png" alt="javascript"></a>

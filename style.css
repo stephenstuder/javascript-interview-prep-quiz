@@ -1,4 +1,5 @@
 /* Element Styles */
+
 body {
   background: #252c4a;
   font-family: ocr-a-std, monospace;
@@ -19,14 +20,23 @@ h3 {
 p {
   font-size: 1rem;
 }
+button {
+    width:300px;
+    padding: 5px;
+}
+/* Custom Styles */
 .javascript-image {
   width: 200px;
 }
 .outside-border {
     border: 2px solid #f7df1e;
 }
-
-/* Custom Styles */
+.leaderboard-title{
+    font-size: 1.5rem;
+}
+#countdown{
+    
+}
 @media (max-width: 758px) {
 
   /* Mobile */

@@ -13,19 +13,29 @@
 
 <body class="d-flex">
     <div class="container container-fluid d-flex flex-column align-self-center justify-content-center outside-border p-3">
-        <nav class="d-flex flex-row justify-content-between align-items-center p-4">
-            <h1>Question 1/10</h1>
+        <nav class="d-flex flex-row justify-content-between align-items-center p-4-sm">
+            <h1 class="m-0">Question <span id="question-num">1</span>/10</h1>
             <div class="clock-container d-flex align-items-center justify-content-center">
                 <img src="../images/clock.png" alt="clock" width="50">
-                <h2>60</h2>
+                <h2 id="countdown">60</h2>
             </div>
         </nav>
-        <main class="d-flex flex-column align-items-center p-3">
-            <h3 class="p-5">Which of the following is not a datatype of javascript?</h3>
-            <a href="./leaderboard.html"><button class="m-2">boolean</button></a>
-            <a href="./leaderboard.html"><button class="m-2">integer</button></a>
-            <a href="./leaderboard.html"><button class="m-2">null</button></a>
-            <a href="./leaderboard.html"><button class="m-2">string</button></a>
+        <main class=" p-3">
+            <h3 id="question"class="p-5"></h3>
+            <div class="d-flex flex-column align-items-center" id="options-parent">
+                <a href="./leaderboard.html">
+                    <button id="option-1" class="m-2"></button>
+                </a>
+                <a href="./leaderboard.html">
+                    <button id="option-2" class="m-2"></button>
+                </a>
+                <a href="./leaderboard.html">
+                    <button id="option-3" class="m-2"></button>
+                </a>
+                <a href="./leaderboard.html">
+                    <button id="option-4" class="m-2"></button>
+                </a>
+            </div>
         </main>
         <footer class="d-flex flex-column align-items-center p-3">
             <a href="../index.html"><img class ="javascript-image" src="../images/javascript.png" alt="javascript"></a>
