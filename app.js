@@ -1,5 +1,3 @@
-console.log('It Works!');
-
 
 //variables
 let questionNum = document.querySelector("#question-num");
@@ -104,6 +102,8 @@ function timerBegin() {
         if (secondsLeft <= 0) {
             //end the round and collect the score
             clearInterval(countdownClock);
+            let score = countdownClock;
+            console.log("you got a score of" + score);
             document.location.href = "./leaderboard.html";
         }
     }, 1000);
@@ -111,6 +111,14 @@ function timerBegin() {
 
 let i = 0;
 function loadQuestions() {
+    // if (i > 10) {
+    //     //end the round and collect the score
+    //     let score = countdownClock;
+    //     console.log("you got a score of" + score);
+    //     clearInterval(countdownClock);
+    //     document.location.href = "./leaderboard.html";
+    //     return;
+    // } Needs to exit when questions are empty, error handler?
     questionNum.textContent = i + 1;
     question.textContent = questionBank[i].q;
     optionOne.textContent = questionBank[i].o1;
