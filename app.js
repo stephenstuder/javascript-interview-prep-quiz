@@ -98,62 +98,57 @@ function timerBegin() {
     let quizTime = setInterval(function () {
         secondsLeft--;
         countdownClock.textContent = secondsLeft;
-
-        if (secondsLeft <= 0) {
-            //end the round and collect the score
-            clearInterval(countdownClock);
-            let score = countdownClock;
-            console.log("you got a score of" + score);
-            document.location.href = "./leaderboard.html";
-        }
     }, 1000);
 }
 
 let i = 0;
 function loadQuestions() {
-    // if (i > 10) {
-    //     //end the round and collect the score
-    //     let score = countdownClock;
-    //     console.log("you got a score of" + score);
-    //     clearInterval(countdownClock);
-    //     document.location.href = "./leaderboard.html";
-    //     return;
-    // } Needs to exit when questions are empty, error handler?
-    questionNum.textContent = i + 1;
-    question.textContent = questionBank[i].q;
-    optionOne.textContent = questionBank[i].o1;
-    optionTwo.textContent = questionBank[i].o2;
-    optionThree.textContent = questionBank[i].o3;
-    optionFour.textContent = questionBank[i].o4;
-}
-
-optionsParent.addEventListener("click", function (e) {
-    e.preventDefault();
-    let answer = questionBank[i].a;
-    if (e.target.textContent !== answer) {
-        deductFiveSeconds();
-    } else {
-        i++;
-        loadQuestions();
+    if (i > 9) {
+         //end the round and collect the score
+         let score = secondsLeft;
+         clearInterval(countdownClock);
+         document.location.href = "./leaderboard.html";
+         return score;
+     } 
+     //Needs to exit when questions are empty, error handler?
+     questionNum.textContent = i + 1;
+     question.textContent = questionBank[i].q;
+     optionOne.textContent = questionBank[i].o1;
+     optionTwo.textContent = questionBank[i].o2;
+     optionThree.textContent = questionBank[i].o3;
+     optionFour.textContent = questionBank[i].o4;
     }
-});
+   
 
-
-// Come back here and add the shakey animation
+    
+    
+    // Come back here and add the shakey animation
 let shakeClock = document.querySelector("#shake-clock-toggle");
-
+    
 function deductFiveSeconds() {
     secondsLeft = secondsLeft - 5;
-
+        
 }
+    
+    function setScore() {
+        alert(score);
+    }
+    
+    if (window.location.href.match('quiz.html') != null) {
+        var secondsLeft = 60;
+        timerBegin();
+        let score = loadQuestions();
 
-function setScore() {
+        optionsParent.addEventListener("click", function (e) {
+            e.preventDefault();
+            let answer = questionBank[i].a;
+            if (e.target.textContent !== answer) {
+                deductFiveSeconds();
+            } else {
+                i++;
+                loadQuestions();
+            }
+        });
 
-}
-
-if (window.location.href.match('quiz.html') != null) {
-    var secondsLeft = 60;
-    timerBegin();
-    loadQuestions();
-    setScore();
+        setScore();
 }
