@@ -1,14 +1,4 @@
 
-//variables
-let questionNum = document.querySelector("#question-num");
-let question = document.querySelector("#question");
-let optionOne = document.querySelector("#option-1")
-let optionTwo = document.querySelector("#option-2")
-let optionThree = document.querySelector("#option-3")
-let optionFour = document.querySelector("#option-4")
-let countdownClock = document.querySelector("#countdown");
-let optionsParent = document.querySelector("#options-parent");
-
 //defining questions as objects
 const q1 = {
     q: "Which of the following is not a datatype of javascript?",
@@ -90,9 +80,94 @@ const q10 = {
     o4: "Initialization,Testing, Incrementation",
     a: "Initialization,Testing, Updation"
 }
-var questionBank = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
 
 //for loop for loading the questions 
+var questionBank = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
+
+//variables
+var questionNum = document.querySelector("#question-num");
+var question = document.querySelector("#question");
+var optionOne = document.querySelector("#option-1")
+var optionTwo = document.querySelector("#option-2")
+var optionThree = document.querySelector("#option-3")
+var optionFour = document.querySelector("#option-4")
+var countdownClock = document.querySelector("#countdown");
+var optionsParent = document.querySelector("#options-parent");
+var startQuiz = document.querySelector("#start-quiz");
+var homeScreen = document.querySelector("#home-screen");
+var quizScreen = document.querySelector("#quiz-screen");
+var leaderboardScreen = document.querySelector("#leaderboard-screen");
+let secondsLeft = 60;
+let score = 0;
+
+//Helper functions
+function hideHomeScreen() {
+    homeScreen.classList.remove("d-flex");
+    homeScreen.classList.add("d-none");
+}
+function showHomeScreen() {
+    homeScreen.classList.add("d-flex");
+    homeScreen.classList.remove("d-none");
+}
+function showQuizScreen() {
+    quizScreen.classList.remove("d-none");
+    quizScreen.classList.add("d-flex");
+}
+function hideQuizScreen() {
+    quizScreen.classList.add("d-none");
+    quizScreen.classList.remove("d-flex");
+}
+function showLeaderboardScreen() {
+    leaderboardScreen.classList.remove("d-none");
+    leaderboardScreen.classList.add("d-flex");
+}
+function hideLeaderboardScreen() {
+    leaderboardScreen.classList.add("d-none");
+    leaderboardScreen.classList.remove("d-flex");
+}
+function deductFiveSeconds() {
+    secondsLeft = secondsLeft - 5;
+}
+
+optionsParent.addEventListener("click", function (e) {
+    e.preventDefault();
+    let answer = questionBank[i].a;
+    if (e.target.textContent !== answer) {
+        deductFiveSeconds();
+    } else {
+        i++;
+        runQuiz();
+    }
+});
+
+startQuiz.addEventListener("click", function () {
+    hideHomeScreen();
+    showQuizScreen();
+    timerBegin();
+    runQuiz();
+    handleScore();
+});
+
+
+var i = 8;
+function runQuiz() {
+    if (i > questionBank.length - 1) {
+        //end the round and collect the score
+            var score = secondsLeft;
+            clearInterval(countdownClock);
+            hideQuizScreen();
+            showLeaderboardScreen();
+            return score;
+        }
+        //Needs to exit when questions are empty, error handler?
+        questionNum.textContent = i + 1;
+        question.textContent = questionBank[i].q;
+        optionOne.textContent = questionBank[i].o1;
+        optionTwo.textContent = questionBank[i].o2;
+        optionThree.textContent = questionBank[i].o3;
+        optionFour.textContent = questionBank[i].o4;
+    }
+    
 
 function timerBegin() {
     let quizTime = setInterval(function () {
@@ -101,54 +176,17 @@ function timerBegin() {
     }, 1000);
 }
 
-let i = 0;
-function loadQuestions() {
-    if (i > 9) {
-         //end the round and collect the score
-         let score = secondsLeft;
-         clearInterval(countdownClock);
-         document.location.href = "./leaderboard.html";
-         return score;
-     } 
-     //Needs to exit when questions are empty, error handler?
-     questionNum.textContent = i + 1;
-     question.textContent = questionBank[i].q;
-     optionOne.textContent = questionBank[i].o1;
-     optionTwo.textContent = questionBank[i].o2;
-     optionThree.textContent = questionBank[i].o3;
-     optionFour.textContent = questionBank[i].o4;
-    }
-   
-
-    
-    
-    // Come back here and add the shakey animation
+function handleScore() {
+    let score = secondsLeft;
+    console.log(score);
+}
+// Come back here and add the shakey animation
 let shakeClock = document.querySelector("#shake-clock-toggle");
-    
-function deductFiveSeconds() {
-    secondsLeft = secondsLeft - 5;
-        
-}
-    
-    function setScore() {
-        alert(score);
-    }
-    
-    if (window.location.href.match('quiz.html') != null) {
-        var secondsLeft = 60;
-        timerBegin();
-        let score = loadQuestions();
 
-        optionsParent.addEventListener("click", function (e) {
-            e.preventDefault();
-            let answer = questionBank[i].a;
-            if (e.target.textContent !== answer) {
-                deductFiveSeconds();
-            } else {
-                i++;
-                loadQuestions();
-            }
-        });
 
-        setScore();
-}
+
+//Logic controlling the quiz currently
+
+
+
+
