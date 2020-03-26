@@ -153,8 +153,8 @@ startQuiz.addEventListener("click", function () {
     resetVariables();
     hideHomeScreen();
     showQuizScreen();
-    timerBegin();
     runQuiz();
+    timerBegin();
 });
 
 //Quiz Logic
@@ -176,24 +176,25 @@ function runQuiz() {
         }
     }
     
-// Timer
-function timerBegin() {
-    let quizTime = setInterval(function () {
-        secondsLeft--;
-        countdownClock.textContent = secondsLeft;
-    }, 1000);
-}
-
-// Come back here and add the shakey animation
-let shakeClock = document.querySelector("#shake-clock-toggle");
-
-// Grabs Values and sends them to Local Storage, then uses values to set screen
-function setLeaderboardScreen(){
-    console.log(secondsLeft);
-    var initials = prompt("Your Score was " + secondsLeft + "! Enter your initials Below")
-    Object.assign(leaderboard, {[initials]: secondsLeft});
-    console.log(leaderboard);
-    localStorage.setItem("leaderboardStandings", JSON.stringify(leaderboard))
+    // Timer
+    function timerBegin() {
+        let quizTime = setInterval(function () {
+            secondsLeft--;
+            countdownClock.textContent = secondsLeft;
+        }, 1000);
+    }
+    
+    // Come back here and add the shakey animation
+    let shakeClock = document.querySelector("#shake-clock-toggle");
+    
+    // Grabs Values and sends them to Local Storage, then uses values to set screen
+    function setLeaderboardScreen(){
+        console.log(secondsLeft);
+        var initials = prompt("Your Score was " + secondsLeft + "! Enter your initials Below")
+        Object.assign(leaderboard, {[initials]: secondsLeft});
+        console.log(leaderboard);
+        localStorage.setItem("leaderboardStandings", JSON.stringify(leaderboard))
+        init();
 }
 
 // Leaderboard Object for holding scores
@@ -208,4 +209,39 @@ function resetVariables(){
     initials = "";
     secondsLeft = 60;
 }
+function init() {
+    // Get stored leaderboard from localStorage
+    // Parsing the JSON string to an object
+    var storedLeaderboard = JSON.parse(localStorage.getItem("leaderboardStandings"));
+  
+    // If leaderboard were retrieved from localStorage, update the leaderboard array to it
+    if (storedLeaderboard !== null) {
+      leaderboard = storedLeaderboard;
+    }
+  
+    // Render leaderboard to the DOM
+    renderleaderboard();
+  }
 
+initialsUlElement = document.querySelector("#initials-ul-element");
+scoresUlElement = document.querySelector("#scores-ul-element");
+
+
+function renderleaderboard() {
+    initialsUlElement.innerHTML = '';
+    scoresUlElement.innerHTML = '';
+    // Render a new li for each todo
+     for (var initial in leaderboard) {
+       var initialsLi = document.createElement("li");
+       initialsLi.textContent = initial;
+       initialsLi.setAttribute("class", "p-2 list-inline-item");
+       console.log(initial);
+       initialsUlElement.appendChild(initialsLi);
+
+       var scoreLi = document.createElement("li");
+       scoreLi.textContent = secondsLeft;
+       scoreLi.setAttribute("class", "p-2 list-inline-item");
+       console.log(scoreLi);
+       scoresUlElement.appendChild(scoreLi);
+     }
+  }
