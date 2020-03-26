@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
 }
 h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 h2 {
   font-size: 2rem;
@@ -21,27 +21,25 @@ p {
   font-size: 1rem;
 }
 button {
-    width:300px;
-    padding: 5px;
+  width: 300px;
+  padding: 5px;
 }
 /* Custom Styles */
 .javascript-image {
   width: 200px;
 }
 .outside-border {
-    border: 2px solid #f7df1e;
+  border: 2px solid #f7df1e;
 }
-.leaderboard-title{
-    font-size: 1.5rem;
+.leaderboard-title {
+  font-size: 1.5rem;
 }
-#countdown{
-    
+#countdown {
 }
 .progress-bar {
-    background: #f7df1e;
+  background: #f7df1e;
 }
 @media (max-width: 758px) {
-
   /* Mobile */
   h1 {
     font-size: 2rem;
