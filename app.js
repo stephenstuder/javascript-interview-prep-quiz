@@ -94,6 +94,7 @@ var optionFour = document.querySelector("#option-4")
 var countdownClock = document.querySelector("#countdown");
 var optionsParent = document.querySelector("#options-parent");
 var startQuiz = document.querySelector("#start-quiz");
+var exitButton = document.querySelector("#exit");
 var homeScreen = document.querySelector("#home-screen");
 var quizScreen = document.querySelector("#quiz-screen");
 var leaderboardScreen = document.querySelector("#leaderboard-screen");
@@ -129,6 +130,13 @@ function deductFiveSeconds() {
     secondsLeft = secondsLeft - 5;
 }
 
+
+//Button Listeners
+exitButton.addEventListener("click", function(){
+    hideLeaderboardScreen();
+    showHomeScreen();
+})
+
 optionsParent.addEventListener("click", function (e) {
     e.preventDefault();
     let answer = questionBank[i].a;
@@ -140,35 +148,35 @@ optionsParent.addEventListener("click", function (e) {
     }
 });
 
+
 startQuiz.addEventListener("click", function () {
+    resetVariables();
     hideHomeScreen();
     showQuizScreen();
     timerBegin();
     runQuiz();
-    handleScore();
 });
 
-
-var i = 8;
+//Quiz Logic
 function runQuiz() {
     if (i > questionBank.length - 1) {
         //end the round and collect the score
             var score = secondsLeft;
-            clearInterval(countdownClock);
             hideQuizScreen();
             showLeaderboardScreen();
-            return score;
+            setLeaderboardScreen();
+            clearInterval(countdownClock);
+        } else {
+            questionNum.textContent = i + 1;
+            question.textContent = questionBank[i].q;
+            optionOne.textContent = questionBank[i].o1;
+            optionTwo.textContent = questionBank[i].o2;
+            optionThree.textContent = questionBank[i].o3;
+            optionFour.textContent = questionBank[i].o4;
         }
-        //Needs to exit when questions are empty, error handler?
-        questionNum.textContent = i + 1;
-        question.textContent = questionBank[i].q;
-        optionOne.textContent = questionBank[i].o1;
-        optionTwo.textContent = questionBank[i].o2;
-        optionThree.textContent = questionBank[i].o3;
-        optionFour.textContent = questionBank[i].o4;
     }
     
-
+// Timer
 function timerBegin() {
     let quizTime = setInterval(function () {
         secondsLeft--;
@@ -176,17 +184,28 @@ function timerBegin() {
     }, 1000);
 }
 
-function handleScore() {
-    let score = secondsLeft;
-    console.log(score);
-}
 // Come back here and add the shakey animation
 let shakeClock = document.querySelector("#shake-clock-toggle");
 
+// Grabs Values and sends them to Local Storage, then uses values to set screen
+function setLeaderboardScreen(){
+    console.log(secondsLeft);
+    var initials = prompt("Your Score was " + secondsLeft + "! Enter your initials Below")
+    Object.assign(leaderboard, {[initials]: secondsLeft});
+    console.log(leaderboard);
+    localStorage.setItem("leaderboardStandings", JSON.stringify(leaderboard))
+}
+
+// Leaderboard Object for holding scores
+var leaderboard = {
+
+}
 
 
-//Logic controlling the quiz currently
-
-
-
+// Needed to reset for each game
+function resetVariables(){
+    i = 8;
+    initials = "";
+    secondsLeft = 60;
+}
 
