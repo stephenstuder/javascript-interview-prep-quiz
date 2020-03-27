@@ -126,6 +126,7 @@ function hideLeaderboardScreen() {
     leaderboardScreen.classList.add("d-none");
     leaderboardScreen.classList.remove("d-flex");
 }
+    
 function deductFiveSeconds() {
     secondsLeft = secondsLeft - 5;
 }
@@ -184,9 +185,6 @@ function runQuiz() {
         }, 1000);
     }
     
-    // Come back here and add the shakey animation
-    let shakeClock = document.querySelector("#shake-clock-toggle");
-    
     // Grabs Values and sends them to Local Storage, then uses values to set screen
     function setLeaderboardScreen(){
         console.log(secondsLeft);
@@ -205,7 +203,7 @@ var leaderboard = {
 
 // Needed to reset for each game
 function resetVariables(){
-    i = 8;
+    i = 9;
     initials = "";
     secondsLeft = 60;
 }
@@ -231,17 +229,25 @@ function renderleaderboard() {
     initialsUlElement.innerHTML = '';
     scoresUlElement.innerHTML = '';
     // Render a new li for each todo
-     for (var initial in leaderboard) {
+     for (var value in leaderboard) {
        var initialsLi = document.createElement("li");
-       initialsLi.textContent = initial;
+       initialsLi.textContent = value;
        initialsLi.setAttribute("class", "p-2 list-inline-item");
-       console.log(initial);
+       console.log(value);
        initialsUlElement.appendChild(initialsLi);
 
        var scoreLi = document.createElement("li");
-       scoreLi.textContent = secondsLeft;
+       scoreLi.textContent = leaderboard[value];
        scoreLi.setAttribute("class", "p-2 list-inline-item");
-       console.log(scoreLi);
+       console.log(value);
        scoresUlElement.appendChild(scoreLi);
      }
   }
+
+var clearLeaderboard = document.querySelector("#clear-leaderboard");
+
+clearLeaderboard.addEventListener("click", function(){
+    initialsUlElement.innerHTML = '';
+    scoresUlElement.innerHTML = '';
+    localStorage.clear();
+})
