@@ -95,6 +95,7 @@ var countdownClock = document.querySelector("#countdown");
 var optionsParent = document.querySelector("#options-parent");
 var startQuiz = document.querySelector("#start-quiz");
 var exitButton = document.querySelector("#exit");
+var leaderboardButton = document.querySelector("#leaderboard-button");
 var homeScreen = document.querySelector("#home-screen");
 var quizScreen = document.querySelector("#quiz-screen");
 var leaderboardScreen = document.querySelector("#leaderboard-screen");
@@ -136,7 +137,11 @@ function deductFiveSeconds() {
 exitButton.addEventListener("click", function(){
     hideLeaderboardScreen();
     showHomeScreen();
-})
+});
+leaderboardButton.addEventListener("click", function(){
+    hideHomeScreen();
+    showLeaderboardScreen();
+});
 
 optionsParent.addEventListener("click", function (e) {
     e.preventDefault();
