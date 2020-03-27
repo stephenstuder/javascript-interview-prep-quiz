@@ -99,6 +99,8 @@ var leaderboardButton = document.querySelector("#leaderboard-button");
 var homeScreen = document.querySelector("#home-screen");
 var quizScreen = document.querySelector("#quiz-screen");
 var leaderboardScreen = document.querySelector("#leaderboard-screen");
+initialsUlElement = document.querySelector("#initials-ul-element");
+scoresUlElement = document.querySelector("#scores-ul-element");
 let secondsLeft = 60;
 let score = 0;
 
@@ -132,6 +134,7 @@ function deductFiveSeconds() {
     secondsLeft = secondsLeft - 5;
 }
 
+renderleaderboard();
 
 //Button Listeners
 exitButton.addEventListener("click", function(){
@@ -226,8 +229,6 @@ function init() {
     renderleaderboard();
   }
 
-initialsUlElement = document.querySelector("#initials-ul-element");
-scoresUlElement = document.querySelector("#scores-ul-element");
 
 
 function renderleaderboard() {
