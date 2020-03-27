@@ -133,8 +133,9 @@ function hideLeaderboardScreen() {
 function deductFiveSeconds() {
     secondsLeft = secondsLeft - 5;
 }
-
-renderleaderboard();
+document.addEventListener("DOMContentLoaded", function(){
+    init();
+  });
 
 //Button Listeners
 exitButton.addEventListener("click", function(){
