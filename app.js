@@ -256,5 +256,8 @@ var clearLeaderboard = document.querySelector("#clear-leaderboard");
 clearLeaderboard.addEventListener("click", function(){
     initialsUlElement.innerHTML = '';
     scoresUlElement.innerHTML = '';
+    leaderboard = {
+
+    };
     localStorage.clear();
 })
