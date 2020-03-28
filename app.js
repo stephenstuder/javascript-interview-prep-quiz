@@ -158,7 +158,7 @@ optionsParent.addEventListener("click", function (e) {
     }
 });
 
-
+// Quiz begin button listener
 startQuiz.addEventListener("click", function () {
     resetVariables();
     hideHomeScreen();
@@ -187,7 +187,7 @@ function runQuiz() {
     }
     
     // Timer
-    function timerBegin() {
+function timerBegin() {
         let quizTime = setInterval(function () {
             secondsLeft--;
             countdownClock.textContent = secondsLeft;
@@ -195,7 +195,7 @@ function runQuiz() {
     }
     
     // Grabs Values and sends them to Local Storage, then uses values to set screen
-    function setLeaderboardScreen(){
+function setLeaderboardScreen(){
         console.log(secondsLeft);
         var initials = prompt("Your Score was " + secondsLeft + "! Enter your initials Below")
         Object.assign(leaderboard, {[initials]: secondsLeft});
@@ -212,7 +212,7 @@ var leaderboard = {
 
 // Needed to reset for each game
 function resetVariables(){
-    i = 9;
+    i = 0;
     initials = "";
     secondsLeft = 60;
 }
@@ -236,7 +236,7 @@ function renderleaderboard() {
     initialsUlElement.innerHTML = '';
     scoresUlElement.innerHTML = '';
     // Render a new li for each todo
-     for (var value in leaderboard) {
+     for (let value in leaderboard) {
        var initialsLi = document.createElement("li");
        initialsLi.textContent = value;
        initialsLi.setAttribute("class", "p-2 list-inline-item");
