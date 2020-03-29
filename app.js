@@ -162,6 +162,7 @@ optionsParent.addEventListener("click", function (e) {
 });
 
 // Quiz begin button listener
+
 startQuiz.addEventListener("click", function () {
     resetVariables();
     hideHomeScreen();
@@ -190,8 +191,10 @@ function runQuiz() {
     }
     
     // Timer
+    let quizTime
     function timerBegin() {
-        let quizTime = setInterval(function () {
+        clearInterval(quizTime);
+        quizTime = setInterval(function () {
             secondsLeft--;
             countdownClock.textContent = secondsLeft;
             if (secondsLeft <= 0){
@@ -283,10 +286,6 @@ clearLeaderboard.addEventListener("click", function(){
     };
     localStorage.clear();
 });
-
-
-
-
 
 function closeModal(){
     modalOuter.classList.remove('open');
