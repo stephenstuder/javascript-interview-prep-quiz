@@ -32,16 +32,10 @@
           <li class="p-2">Time Remaining is your Score!</li>
         </ul>
         <a href="#"><button id="start-quiz" class="m-2">Start Quiz</button></a>
-        <a href="#"
-          ><button id="leaderboard-button" class="m-2">Leaderboard</button></a
-        >
+        <a href="#"><button id="leaderboard-button" class="m-2">Leaderboard</button></a>
       </main>
       <footer class="d-flex flex-column align-items-center p-3">
-        <img
-          class="javascript-image"
-          src="./images/javascript.png"
-          alt="javascript"
-        />
+        <img class="javascript-image" src="./images/javascript.png" alt="javascript" />
         <p class="p-3">Stephen Studer</p>
       </footer>
     </div>
@@ -50,19 +44,10 @@
       id="quiz-screen"
       class="container container-fluid d-none flex-column align-self-center justify-content-center outside-border p-3"
     >
-      <nav
-        class="d-flex flex-row justify-content-between align-items-center p-4-sm"
-      >
+      <nav class="d-flex flex-row justify-content-between align-items-center p-4-sm">
         <h1 class="m-0">Question <span id="question-num">1</span>/10</h1>
-        <div
-          class="clock-container d-flex align-items-center justify-content-center"
-        >
-          <img
-            id="shake-clock-toggle"
-            src="./images/clock.png"
-            alt="clock"
-            width="50"
-          />
+        <div class="clock-container d-flex align-items-center justify-content-center">
+          <img id="shake-clock-toggle" src="./images/clock.png" alt="clock" width="50" />
           <h2 id="countdown">60</h2>
         </div>
       </nav>
@@ -94,17 +79,19 @@
         </div>
       </main>
       <footer class="d-flex flex-column align-items-center p-3">
-        <a href="#"
-          ><img
-            class="javascript-image"
-            src="./images/javascript.png"
-            alt="javascript"
-        /></a>
+        <a href="#"><img class="javascript-image" src="./images/javascript.png" alt="javascript"/></a>
         <p class="p-3">Stephen Studer</p>
       </footer>
     </div>
     <!-- Modal Here -->
-
+    <div class="modal-outer">
+      <div class="modal-inner">
+        <p>You got a score of <span id="score-span"></span></p>
+        <p>Enter your name below!</p>
+        <input id="initial-getter" type="text" value="" placeholder="Enter Name">
+        <input id="initial-submitter"class="m-3" type="submit" value="Submit">
+      </div>
+    </div>
     <!-- Leaderboard -->
     <div
       id="leaderboard-screen"
@@ -116,18 +103,12 @@
       <main class="d-flex flex-column align-items-center">
         <div class="d-flex flex-row">
           <ul class="p-0 d-flex flex-column align-items-center">
-            <li class="p-2 list-inline-item leaderboard-title">Initials</li>
-            <ul
-              id="initials-ul-element"
-              class="d-flex p-0 flex-column align-items-center">
-            </ul>
+            <li class="p-2 list-inline-item leaderboard-title">Names</li>
+            <ul id="initials-ul-element" class="d-flex p-0 flex-column align-items-center"></ul>
           </ul>
           <ul class="d-flex flex-column align-items-center">
             <li class="p-2 list-inline-item leaderboard-title">Score</li>
-            <ul
-              id="scores-ul-element"
-              class="d-flex p-0 flex-column align-items-center">
-            </ul>
+            <ul id="scores-ul-element" class="d-flex p-0 flex-column align-items-center"></ul>
           </ul>
         </div>
         <a href="#"
@@ -138,12 +119,7 @@
         <a href="#"><button id="exit" class="m-2">Exit</button></a>
       </main>
       <footer class="d-flex flex-column align-items-center p-3">
-        <a href="#"
-          ><img
-            class="javascript-image"
-            src="./images/javascript.png"
-            alt="javascript"
-        /></a>
+        <a href="#"><img class="javascript-image" src="./images/javascript.png" alt="javascript"/></a>
         <p class="p-3">Stephen Studer</p>
       </footer>
     </div>

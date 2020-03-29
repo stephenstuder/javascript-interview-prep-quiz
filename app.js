@@ -101,8 +101,11 @@ var quizScreen = document.querySelector("#quiz-screen");
 var leaderboardScreen = document.querySelector("#leaderboard-screen");
 initialsUlElement = document.querySelector("#initials-ul-element");
 scoresUlElement = document.querySelector("#scores-ul-element");
-let secondsLeft = 60;
-let score = 0;
+var modalInner = document.querySelector(".modal-inner");
+var modalOuter = document.querySelector(".modal-outer");
+var scoreSpan = document.querySelector("#score-span");
+var secondsLeft = 60;
+var score = 0;
 
 //Helper functions
 function hideHomeScreen() {
@@ -168,14 +171,15 @@ startQuiz.addEventListener("click", function () {
 });
 
 //Quiz Logic
+var score;
 function runQuiz() {
     if (i > questionBank.length - 1) {
         //end the round and collect the score
-            var score = secondsLeft;
+            score = secondsLeft;
             hideQuizScreen();
+            clearInterval(countdownClock);
             showLeaderboardScreen();
             setLeaderboardScreen();
-            clearInterval(countdownClock);
         } else {
             questionNum.textContent = i + 1;
             question.textContent = questionBank[i].q;
@@ -187,7 +191,7 @@ function runQuiz() {
     }
     
     // Timer
-function timerBegin() {
+    function timerBegin() {
         let quizTime = setInterval(function () {
             secondsLeft--;
             countdownClock.textContent = secondsLeft;
@@ -195,13 +199,24 @@ function timerBegin() {
     }
     
     // Grabs Values and sends them to Local Storage, then uses values to set screen
-function setLeaderboardScreen(){
-        console.log(secondsLeft);
-        var initials = prompt("Your Score was " + secondsLeft + "! Enter your initials Below")
-        Object.assign(leaderboard, {[initials]: secondsLeft});
-        console.log(leaderboard);
-        localStorage.setItem("leaderboardStandings", JSON.stringify(leaderboard))
-        init();
+    let initialSubmitter = document.querySelector("#initial-submitter");
+    let initialGetter = document.querySelector("#initial-getter");
+    
+    function setLeaderboardScreen(){
+        modalOuter.classList.add('open');
+        initialGetter.value= "";
+        scoreSpan.textContent = secondsLeft;
+        initialSubmitter.addEventListener("click",function(){ 
+        initials = document.querySelector('#initial-getter').value;
+        if (initials != ""){
+            Object.assign(leaderboard, {[initials]: score});
+            localStorage.setItem("leaderboardStandings", JSON.stringify(leaderboard))
+            closeModal();
+            init();
+        } else {
+            initialGetter.placeholder= "No Name Entered";
+            }
+        });
 }
 
 // Leaderboard Object for holding scores
@@ -212,7 +227,7 @@ var leaderboard = {
 
 // Needed to reset for each game
 function resetVariables(){
-    i = 0;
+    i = 9;
     initials = "";
     secondsLeft = 60;
 }
@@ -256,8 +271,17 @@ var clearLeaderboard = document.querySelector("#clear-leaderboard");
 clearLeaderboard.addEventListener("click", function(){
     initialsUlElement.innerHTML = '';
     scoresUlElement.innerHTML = '';
+    initialGetter.value= "";
     leaderboard = {
 
     };
     localStorage.clear();
-})
+});
+
+
+
+
+
+function closeModal(){
+    modalOuter.classList.remove('open');
+}
