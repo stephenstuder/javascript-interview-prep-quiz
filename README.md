@@ -2,10 +2,10 @@
 This is a 10 question quiz to help prepare for JavaScript job interviews.
 
 ## deployed website
-http://stephenstuder.com/javascript-interview-quiz/
+http://stephenstuder.com/javascript-interview-prep-quiz/
 
 ## screenshot
-<img src="./images/quiz-home-screenshot" alt="screenshot of webpage" width="500"/>
+<img src="./images/quiz-home-screenshot.PNG" alt="screenshot of webpage" width="500"/>
 
 ## how it works
 Plain old vanilla JavaScript. 
