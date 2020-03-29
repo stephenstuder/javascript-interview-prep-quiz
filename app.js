@@ -227,7 +227,7 @@ var leaderboard = {
 
 // Needed to reset for each game
 function resetVariables(){
-    i = 9;
+    i = 0;
     initials = "";
     secondsLeft = 60;
 }
