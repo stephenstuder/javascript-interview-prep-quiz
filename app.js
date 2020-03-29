@@ -177,7 +177,6 @@ function runQuiz() {
         //end the round and collect the score
             score = secondsLeft;
             hideQuizScreen();
-            clearInterval(countdownClock);
             showLeaderboardScreen();
             setLeaderboardScreen();
         } else {
@@ -195,9 +194,16 @@ function runQuiz() {
         let quizTime = setInterval(function () {
             secondsLeft--;
             countdownClock.textContent = secondsLeft;
+            if (secondsLeft <= 0){
+                score = secondsLeft;
+                hideQuizScreen();
+                clearInterval(quizTime);
+                showLeaderboardScreen();
+                setLeaderboardScreen();
+            }
         }, 1000);
     }
-    
+
     // Grabs Values and sends them to Local Storage, then uses values to set screen
     let initialSubmitter = document.querySelector("#initial-submitter");
     let initialGetter = document.querySelector("#initial-getter");
