@@ -155,6 +155,8 @@ optionsParent.addEventListener("click", function (e) {
     let answer = questionBank[i].a;
     if (e.target.textContent !== answer) {
         deductFiveSeconds();
+        i++;
+        runQuiz();
     } else {
         i++;
         runQuiz();
